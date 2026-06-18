@@ -2,15 +2,20 @@ package ch.axa.punchclock.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import ch.axa.punchclock.entities.Entry;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 
+@Service
 public class EntryService {
 
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Transactional
     public void create(Entry entry) {
         this.entityManager.persist(entry);
     }

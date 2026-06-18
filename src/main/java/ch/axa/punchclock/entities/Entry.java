@@ -27,6 +27,9 @@ public class Entry {
     @Column(name = "check_in", nullable = false)
     private LocalDateTime checkIn;
 
+    /**
+     * Duration is in minutes.
+     */
     @Column
     private int duration;
 
