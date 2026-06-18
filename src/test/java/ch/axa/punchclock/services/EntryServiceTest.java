@@ -63,7 +63,7 @@ public class EntryServiceTest {
         entryService.create(entry2);
 
         List<Entry> entries = entryService.index();
-        assertTrue(entries.size() >= 2);
+        assertTrue(entries.size() == 2);
     }
 
     @Test
