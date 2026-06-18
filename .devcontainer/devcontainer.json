@@ -8,6 +8,9 @@
 	"features": {
 		"ghcr.io/devcontainers-extra/features/springboot-sdkman:2": {}
 	},
+	"forwardPorts": [
+		8080
+	],
 	"customizations": {
 		"vscode": {
 			"extensions": [

@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-PunchclockApplication<punchclock>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "ch.axa.punchclock.PunchclockApplication",
+      "projectName": "punchclock",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
