@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <th:block th:insert="~{fragments/default.html :: head}"></th:block>
+    <title>Punchclock: Eintrag bearbeiten</title>
+  </head>
+
+  <body>
+    <th:block th:insert="~{fragments/default.html :: header}"></th:block>
+    <main>
+      <h1>Eintrag bearbeiten</h1>
+      <form action="#" th:action="@{/update/{id}(id=${entry.id})}" th:object="${entry}" method="post">
+        <label for="description">Beschreibung</label>
+        <textarea th:field="*{description}" id="description" placeholder="Beschreibung" />
+        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+        <label for="checkIn">Von</label>
+        <input type="datetime-local" th:field="*{checkIn}" id="checkIn" />
+        <span th:if="${#fields.hasErrors('checkIn')}" th:errors="*{checkIn}"></span>
+        <label for="checkOut">Bis</label>
+        <input type="datetime-local" th:field="*{checkOut}" id="checkOut" />
+        <span th:if="${#fields.hasErrors('checkOut')}" th:errors="*{checkOut}"></span>
+        <div th:if="${#fields.hasErrors('checkOutAfterCheckIn')}" th:text="${#fields.errors('checkOutAfterCheckIn')[0]}"></div>
+        <button type="submit">Erstellen</button>
+      </form>
+    </main>
+    <th:block th:insert="~{fragments/default.html :: footer}"></th:block>
+  </body>
+
+</html>

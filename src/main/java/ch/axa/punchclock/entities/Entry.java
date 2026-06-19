@@ -19,7 +19,7 @@ public class Entry {
     @Column(name = "entry_id")
     private Long id;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "check_in", nullable = false)
     private LocalDateTime checkIn;
 
