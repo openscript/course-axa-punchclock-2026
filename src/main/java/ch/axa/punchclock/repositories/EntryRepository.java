@@ -4,6 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import ch.axa.punchclock.entities.Entry;
 
-public interface EntryRepository extends CrudRepository<Entry, Long> {
-    
+public interface EntryRepository extends CrudRepository<Entry, Long> {    
 }
