@@ -10,6 +10,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "entry")
@@ -19,6 +22,7 @@ public class Entry {
     @Column(name = "entry_id")
     private Long id;
 
+    @NotNull(message = "Von darf nicht leer sein.")
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "check_in", nullable = false)
     private LocalDateTime checkIn;
@@ -29,6 +33,7 @@ public class Entry {
     @Column
     private int duration;
 
+    @NotBlank(message = "Beschreibung darf nicht leer sein.")
     @Column(length = 5000)
     private String description;
 
@@ -62,6 +67,15 @@ public class Entry {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @AssertTrue(message = "Von und die Dauer dürfen Mitternacht nicht überschreiten.")
+    public boolean isDurationBeforeMidnight() {
+        if (this.checkIn != null) {
+            var checkOut = this.checkIn.plusMinutes(this.duration);
+            return this.checkIn.toLocalDate().isEqual(checkOut.toLocalDate());
+        }
+        return false;
     }
     
 }

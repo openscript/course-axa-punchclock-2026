@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import ch.axa.punchclock.entities.Entry;
 import ch.axa.punchclock.repositories.EntryRepository;
+import jakarta.validation.Valid;
 
 
 @Controller
@@ -30,7 +31,7 @@ public class EntryController {
     }
 
     @PostMapping("/create")
-    public String create(Entry entry, BindingResult result, Model model) {
+    public String create(@Valid Entry entry, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "add";
         }
@@ -48,7 +49,7 @@ public class EntryController {
     }
 
     @PostMapping("/update/{id}")
-    public String update(@PathVariable("id") long id, Entry entry, BindingResult result) {
+    public String update(@PathVariable("id") long id, @Valid Entry entry, BindingResult result) {
         if (result.hasErrors()) {
             entry.setId(id);
             return "edit";
