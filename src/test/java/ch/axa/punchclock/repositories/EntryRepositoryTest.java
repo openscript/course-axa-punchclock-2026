@@ -10,15 +10,15 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import ch.axa.punchclock.entities.Entry;
-import jakarta.inject.Inject;
 
 @SpringBootTest
 public class EntryRepositoryTest {
 
-    @Inject
+    @Autowired
     private EntryRepository entryRepository;
 
     @BeforeEach
