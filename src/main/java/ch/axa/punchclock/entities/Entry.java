@@ -7,6 +7,7 @@ import java.util.Set;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,10 +37,12 @@ public class Entry {
     private LocalDateTime checkIn;
 
     @ManyToOne
+    @JsonIgnoreProperties("entries")
     private Category category;
 
     @ManyToMany
     @JoinTable(name = "entry_tags", joinColumns = @JoinColumn(name = "entry_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    @JsonIgnoreProperties("entries")
     private Set<Tag> tags = new HashSet<>();
 
     /**
@@ -101,5 +104,15 @@ public class Entry {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
+
+    
     
 }
