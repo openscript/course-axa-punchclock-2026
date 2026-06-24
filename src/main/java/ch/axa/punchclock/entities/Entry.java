@@ -6,6 +6,8 @@ import java.util.Set;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -83,6 +85,7 @@ public class Entry {
     }
 
     @AssertTrue(message = "Von und die Dauer dürfen Mitternacht nicht überschreiten.")
+    @JsonIgnore
     public boolean isDurationBeforeMidnight() {
         if (this.checkIn != null) {
             var checkOut = this.checkIn.plusMinutes(this.duration);
