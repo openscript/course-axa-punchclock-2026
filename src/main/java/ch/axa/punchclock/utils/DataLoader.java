@@ -58,14 +58,24 @@ public class DataLoader implements ApplicationRunner {
 
     private void createEntries() {
         var firstEntry = new Entry();
-        firstEntry.setDescription("Mehr SQL Statements schreiben");
-        firstEntry.setCategory(categoryRepository.findById(1L).get());
+        firstEntry.setDescription("Sad Coding at BBW");
+        firstEntry.setCategory(categoryRepository.findById(3L).get());
         var tags = new HashSet<Tag>();
         tags.add(tagRepository.findById(1L).get());
         firstEntry.setTags(tags);
-        firstEntry.setCheckIn(LocalDateTime.now());
+        firstEntry.setCheckIn(LocalDateTime.now().minusHours(2));
         firstEntry.setDuration(60);
         entryRepository.save(firstEntry);
+
+        var secondEntry = new Entry();
+        secondEntry.setDescription("Mehr SQL Statements schreiben");
+        secondEntry.setCategory(categoryRepository.findById(1L).get());
+        var secondTags = new HashSet<Tag>();
+        secondTags.add(tagRepository.findById(1L).get());
+        secondEntry.setTags(secondTags);
+        secondEntry.setCheckIn(LocalDateTime.now());
+        secondEntry.setDuration(60);
+        entryRepository.save(secondEntry);
     }
 
     
