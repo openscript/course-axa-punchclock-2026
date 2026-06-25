@@ -39,9 +39,18 @@ public class APIEntryController {
   }
 
   @GetMapping
-  public Iterable<Entry> index(@RequestParam(required = false) Long categoryId) {
+  public Iterable<Entry> index(
+      @RequestParam(required = false) Long categoryId,
+      @RequestParam(required = false) Long tagId,
+      @RequestParam(required = false) String descriptionSearch) {
     if (categoryId != null) {
       return entryRepository.findByCategory(categoryId);
+    }
+    if (tagId != null) {
+      return entryRepository.findByTagsId(tagId);
+    }
+    if (descriptionSearch != null) {
+      return entryRepository.searchByDescription(descriptionSearch);
     }
     return entryRepository.findAll();
   }
