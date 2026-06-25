@@ -52,6 +52,7 @@ public class APIEntryController {
     if (descriptionSearch != null) {
       return entryRepository.searchByDescription(descriptionSearch);
     }
+    //return entryRepository.filter(categoryId, tagId, descriptionSearch);
     return entryRepository.findAll();
   }
 
